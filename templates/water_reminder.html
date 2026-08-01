@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Reminder - IntimaCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-header">
+        <button class="back-btn" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="page-title">Water Reminder</h1>
+    </div>
+    
+    <div class="water-container">
+        <h3 style="text-align: center; margin-bottom: 5px;">Today's Goal</h3>
+        <p style="text-align: center; color: #7C3AED; font-size: 24px; font-weight: 600;">{{ water_goal }} Litres</p>
+        
+        <div class="water-circle">
+            <span class="amount" id="waterAmount">{{ water_consumed }}</span>
+            <span class="unit">L Completed</span>
+        </div>
+        
+        <div class="water-goal">
+            <p style="color: #64748B;">{{ ((water_consumed / water_goal) * 100) | int }}% of your goal</p>
+        </div>
+        
+        <div class="food-section">
+            <h3 style="margin-bottom: 15px;">Set Reminder</h3>
+            <p style="font-size: 14px; color: #64748B; margin-bottom: 15px;">Every</p>
+            <div style="display: flex; gap: 10px;">
+                <button class="condition-tab" onclick="setInterval(this, 30)">30 mins</button>
+                <button class="condition-tab active" onclick="setInterval(this, 60)">60 mins</button>
+                <button class="condition-tab" onclick="setInterval(this, 90)">90 mins</button>
+                <button class="condition-tab" onclick="setInterval(this, 120)">120 mins</button>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox" checked style="width: 20px; height: 20px;">
+                    <span>Enable Notifications</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="water-buttons">
+            <button class="water-btn" onclick="logWater(0.25)" title="Add 250ml">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="water-btn" onclick="logWater(0.5)" title="Add 500ml" style="background: #10B981;">
+                <i class="fas fa-plus"></i> 0.5L
+            </button>
+        </div>
+        
+        <button class="btn btn-primary" style="margin-top: 30px;">
+            <i class="fas fa-check"></i> Save Reminder
+        </button>
+    </div>
+    
+    <script>
+        function logWater(amount) {
+            fetch('/log-water', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'amount=' + amount
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    location.reload();
+                }
+            });
+        }
+        
+        function setInterval(btn, minutes) {
+            document.querySelectorAll('.condition-tab').forEach(el => {
+                el.classList.remove('active');
+            });
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>

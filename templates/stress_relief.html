@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Relief - IntimaCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-header">
+        <button class="back-btn" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="page-title">Stress Relief</h1>
+    </div>
+    
+    <div class="activity-list">
+        <h3 style="margin-bottom: 15px;">Choose Activity</h3>
+        
+        {% for activity in activities %}
+        <div class="activity-card">
+            <div class="activity-icon">
+                <i class="fas {{ activity.icon }}"></i>
+            </div>
+            <div class="activity-info">
+                <h4>{{ activity.name }}</h4>
+                <p>{{ activity.description }}</p>
+            </div>
+            <span class="activity-duration">{{ activity.duration }}</span>
+        </div>
+        {% endfor %}
+        
+        <div style="margin-top: 25px;">
+            <h3 style="margin-bottom: 15px;">Session Duration</h3>
+            <div style="display: flex; gap: 10px;">
+                <button class="condition-tab">5 Min</button>
+                <button class="condition-tab active">10 Min</button>
+                <button class="condition-tab">20 Min</button>
+            </div>
+        </div>
+        
+        <button class="btn btn-primary" style="margin-top: 25px;">
+            <i class="fas fa-play"></i> Start Session
+        </button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - IntimaCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h2 class="profile-name">{{ current_user.name }}</h2>
+            <span class="profile-badge">⭐ Premium Member</span>
+            
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <div class="stat-value">12 Jan 2026</div>
+                    <div class="stat-label">Member Since</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">₹21</div>
+                    <div class="stat-label">Amount Paid</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-menu">
+            <a href="#" class="menu-item">
+                <div class="menu-icon purple">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <span class="menu-text">Manage Reminders</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+            
+            <a href="#" class="menu-item">
+                <div class="menu-icon green">
+                    <i class="fas fa-file-medical"></i>
+                </div>
+                <span class="menu-text">Medical History</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+            
+            <a href="#" class="menu-item">
+                <div class="menu-icon blue">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <span class="menu-text">Health Reports</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+            
+            <a href="#" class="menu-item">
+                <div class="menu-icon orange">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <span class="menu-text">Privacy & Security</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+            
+            <a href="#" class="menu-item">
+                <div class="menu-icon purple">
+                    <i class="fas fa-circle-question"></i>
+                </div>
+                <span class="menu-text">Help & Support</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+            
+            <a href="#" class="menu-item">
+                <div class="menu-icon green">
+                    <i class="fas fa-gear"></i>
+                </div>
+                <span class="menu-text">Settings</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+            
+            <a href="{{ url_for('logout') }}" class="menu-item" style="color: #EF4444;">
+                <div class="menu-icon red">
+                    <i class="fas fa-right-from-bracket"></i>
+                </div>
+                <span class="menu-text">Logout</span>
+                <i class="fas fa-chevron-right menu-arrow"></i>
+            </a>
+        </div>
+    </div>
+    
+    <nav class="bottom-nav">
+        <a href="{{ url_for('dashboard') }}" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('sexual_health') }}" class="nav-item">
+            <i class="fas fa-heart-pulse"></i>
+            <span>Health</span>
+        </a>
+        <a href="{{ url_for('ai_companion') }}" class="nav-item">
+            <i class="fas fa-robot"></i>
+            <span>AI</span>
+        </a>
+        <a href="{{ url_for('notifications') }}" class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>Reminders</span>
+        </a>
+        <a href="{{ url_for('profile') }}" class="nav-item active">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+</body>
+</html>

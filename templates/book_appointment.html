@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - IntimaCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-header">
+        <button class="back-btn" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="page-title">Book Appointment</h1>
+    </div>
+    
+    <div class="activity-list">
+        <div class="doctor-card" style="margin-bottom: 25px;">
+            <div class="doctor-header">
+                <div class="doctor-avatar">
+                    <i class="fas fa-user-doctor"></i>
+                </div>
+                <div class="doctor-info">
+                    <h3>{{ doctor.name }}</h3>
+                    <p>{{ doctor.specialization }}</p>
+                    <div class="doctor-rating">
+                        <i class="fas fa-star"></i>
+                        {{ doctor.rating }} ({{ doctor.total_ratings }})
+                    </div>
+                </div>
+            </div>
+            <p style="color: #64748B;">Consultation Fee: ₹{{ doctor.consultation_fee }}</p>
+        </div>
+        
+        <form method="POST" action="{{ url_for('book_appointment', doctor_id=doctor.id) }}">
+            <div class="form-group">
+                <label>Select Date</label>
+                <input type="date" name="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Select Time</label>
+                <select name="time" required>
+                    <option value="09:00 AM">09:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="02:00 PM">02:00 PM</option>
+                    <option value="03:00 PM">03:00 PM</option>
+                    <option value="04:00 PM">04:00 PM</option>
+                    <option value="05:00 PM">05:00 PM</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Consultation Type</label>
+                <div style="display: flex; gap: 10px;">
+                    <label style="flex: 1; padding: 15px; border: 2px solid #E2E8F0; border-radius: 10px; text-align: center; cursor: pointer;">
+                        <input type="radio" name="type" value="video" style="display: none;">
+                        <i class="fas fa-video" style="font-size: 24px; color: #7C3AED;"></i>
+                        <p style="margin-top: 8px; font-size: 13px;">Video Call</p>
+                    </label>
+                    <label style="flex: 1; padding: 15px; border: 2px solid #E2E8F0; border-radius: 10px; text-align: center; cursor: pointer;">
+                        <input type="radio" name="type" value="chat" style="display: none;">
+                        <i class="fas fa-comment" style="font-size: 24px; color: #10B981;"></i>
+                        <p style="margin-top: 8px; font-size: 13px;">Chat</p>
+                    </label>
+                    <label style="flex: 1; padding: 15px; border: 2px solid #E2E8F0; border-radius: 10px; text-align: center; cursor: pointer;">
+                        <input type="radio" name="type" value="clinic" style="display: none;">
+                        <i class="fas fa-hospital" style="font-size: 24px; color: #F59E0B;"></i>
+                        <p style="margin-top: 8px; font-size: 13px;">Clinic Visit</p>
+                    </label>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
+                <i class="fas fa-calendar-check"></i> Confirm Booking
+            </button>
+        </form>
+    </div>
+</body>
+</html>

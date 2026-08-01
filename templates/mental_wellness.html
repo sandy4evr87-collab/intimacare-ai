@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Wellness - IntimaCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-header">
+        <button class="back-btn" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="page-title">Mental Pressure</h1>
+    </div>
+    
+    <div class="activity-list">
+        <h3 style="margin-bottom: 15px;">How are you feeling?</h3>
+        
+        <div class="mood-selector" style="margin-bottom: 25px;">
+            <div class="mood-options">
+                <button class="mood-btn">
+                    <span style="font-size: 28px;">😔</span>
+                    <span>Lonely</span>
+                </button>
+                <button class="mood-btn">
+                    <span style="font-size: 28px;">😟</span>
+                    <span>Anxious</span>
+                </button>
+                <button class="mood-btn">
+                    <span style="font-size: 28px;">😰</span>
+                    <span>Overthinking</span>
+                </button>
+                <button class="mood-btn">
+                    <span style="font-size: 28px;">😞</span>
+                    <span>Depressed</span>
+                </button>
+            </div>
+        </div>
+        
+        <h3 style="margin-bottom: 15px;">Suggested Activities</h3>
+        
+        <div class="activity-card">
+            <div class="activity-icon" style="background: #D1FAE5;">
+                <i class="fas fa-book" style="color: #10B981;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>Journal</h4>
+                <p>Write your thoughts</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </div>
+        
+        <div class="activity-card">
+            <div class="activity-icon" style="background: #EDE9FE;">
+                <i class="fas fa-spa" style="color: #7C3AED;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>Meditation</h4>
+                <p>Calm your mind</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </div>
+        
+        <div class="activity-card">
+            <div class="activity-icon" style="background: #DBEAFE;">
+                <i class="fas fa-robot" style="color: #3B82F6;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>AI Companion</h4>
+                <p>Talk & feel better</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </div>
+        
+        <div class="activity-card">
+            <div class="activity-icon" style="background: #FEF3C7;">
+                <i class="fas fa-user-doctor" style="color: #F59E0B;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>Talk to Expert</h4>
+                <p>Connect with doctor</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </div>
+    </div>
+    
+    <nav class="bottom-nav">
+        <a href="{{ url_for('dashboard') }}" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('sexual_health') }}" class="nav-item">
+            <i class="fas fa-heart-pulse"></i>
+            <span>Health</span>
+        </a>
+        <a href="{{ url_for('ai_companion') }}" class="nav-item">
+            <i class="fas fa-robot"></i>
+            <span>AI</span>
+        </a>
+        <a href="{{ url_for('notifications') }}" class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>Reminders</span>
+        </a>
+        <a href="{{ url_for('profile') }}" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+</body>
+</html>

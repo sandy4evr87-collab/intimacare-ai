@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - IntimaCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-header">
+        <button class="back-btn" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="page-title">Notifications</h1>
+    </div>
+    
+    <div class="notification-list">
+        <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <button class="condition-tab active">All</button>
+            <button class="condition-tab">Reminders</button>
+        </div>
+        
+        <div class="notification-item unread">
+            <div class="notification-icon" style="background: #DBEAFE;">
+                <i class="fas fa-droplet" style="color: #3B82F6;"></i>
+            </div>
+            <div class="notification-content">
+                <h4>Time to drink water 💧</h4>
+                <p>Don't forget to complete your daily water goal.</p>
+                <span class="notification-time">10:00 AM</span>
+            </div>
+        </div>
+        
+        <div class="notification-item unread">
+            <div class="notification-icon" style="background: #D1FAE5;">
+                <i class="fas fa-utensils" style="color: #10B981;"></i>
+            </div>
+            <div class="notification-content">
+                <h4>Breakfast Time 🍳</h4>
+                <p>A healthy breakfast gives you energy for the day.</p>
+                <span class="notification-time">08:00 AM</span>
+            </div>
+        </div>
+        
+        <div class="notification-item">
+            <div class="notification-icon" style="background: #EDE9FE;">
+                <i class="fas fa-spa" style="color: #7C3AED;"></i>
+            </div>
+            <div class="notification-content">
+                <h4>Meditation Reminder 🧘</h4>
+                <p>Take a break and calm your mind with meditation.</p>
+                <span class="notification-time">06:00 PM</span>
+            </div>
+        </div>
+        
+        <div class="notification-item">
+            <div class="notification-icon" style="background: #FEF3C7;">
+                <i class="fas fa-robot" style="color: #F59E0B;"></i>
+            </div>
+            <div class="notification-content">
+                <h4>AI Companion Misses You 🤖</h4>
+                <p>Let's talk and improve your mood!</p>
+                <span class="notification-time">05:30 PM</span>
+            </div>
+        </div>
+        
+        <div class="notification-item">
+            <div class="notification-icon" style="background: #D1FAE5;">
+                <i class="fas fa-walking" style="color: #10B981;"></i>
+            </div>
+            <div class="notification-content">
+                <h4>Evening Walk Recommended 🚶</h4>
+                <p>A short walk can reduce stress and improve health.</p>
+                <span class="notification-time">05:00 PM</span>
+            </div>
+        </div>
+        
+        <button class="btn btn-outline" style="width: 100%; margin-top: 20px;">
+            Mark all as read
+        </button>
+    </div>
+    
+    <nav class="bottom-nav">
+        <a href="{{ url_for('dashboard') }}" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('sexual_health') }}" class="nav-item">
+            <i class="fas fa-heart-pulse"></i>
+            <span>Health</span>
+        </a>
+        <a href="{{ url_for('ai_companion') }}" class="nav-item">
+            <i class="fas fa-robot"></i>
+            <span>AI</span>
+        </a>
+        <a href="{{ url_for('notifications') }}" class="nav-item active">
+            <i class="fas fa-bell"></i>
+            <span>Reminders</span>
+        </a>
+        <a href="{{ url_for('profile') }}" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Chart - IntimaCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-header">
+        <button class="back-btn" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="page-title">Diet Chart</h1>
+    </div>
+    
+    <div class="diet-container">
+        <div class="condition-tabs">
+            <button class="condition-tab active" onclick="showCondition('low_testosterone')">Low Testosterone</button>
+            <button class="condition-tab" onclick="showCondition('pcod')">PCOD</button>
+            <button class="condition-tab" onclick="showCondition('low_libido')">Low Libido</button>
+        </div>
+        
+        <div id="low_testosterone" class="condition-content">
+            <h2 style="font-size: 20px; margin-bottom: 5px;">Low Testosterone</h2>
+            <p style="color: #64748B; margin-bottom: 20px;">Diet Plan</p>
+            
+            <div class="food-section">
+                <h3><i class="fas fa-check-circle" style="color: #10B981;"></i> Recommended Foods</h3>
+                <div class="food-grid">
+                    <div class="food-item">
+                        <div class="food-icon">🥚</div>
+                        <p>Eggs</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🥜</div>
+                        <p>Almonds</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🥬</div>
+                        <p>Spinach</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🐟</div>
+                        <p>Salmon</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🥛</div>
+                        <p>Milk</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍌</div>
+                        <p>Banana</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🥣</div>
+                        <p>Oats</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🫘</div>
+                        <p>Dates</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="food-section">
+                <h3><i class="fas fa-times-circle" style="color: #EF4444;"></i> Foods to Avoid</h3>
+                <div class="food-grid">
+                    <div class="food-item">
+                        <div class="food-icon">🍺</div>
+                        <p>Alcohol</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍔</div>
+                        <p>Junk Food</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🥤</div>
+                        <p>Sugary Drinks</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍟</div>
+                        <p>Fried Food</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="pcod" class="condition-content" style="display: none;">
+            <h2 style="font-size: 20px; margin-bottom: 5px;">PCOD</h2>
+            <p style="color: #64748B; margin-bottom: 20px;">Diet Plan</p>
+            
+            <div class="food-section">
+                <h3><i class="fas fa-check-circle" style="color: #10B981;"></i> Recommended Foods</h3>
+                <div class="food-grid">
+                    <div class="food-item">
+                        <div class="food-icon">🥬</div>
+                        <p>Leafy Greens</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🫐</div>
+                        <p>Berries</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🥜</div>
+                        <p>Nuts</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🌾</div>
+                        <p>Whole Grains</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🐟</div>
+                        <p>Fish</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🥛</div>
+                        <p>Yogurt</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="food-section">
+                <h3><i class="fas fa-times-circle" style="color: #EF4444;"></i> Foods to Avoid</h3>
+                <div class="food-grid">
+                    <div class="food-item">
+                        <div class="food-icon">🍞</div>
+                        <p>Refined Carbs</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🧃</div>
+                        <p>Processed Food</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍬</div>
+                        <p>Sugar</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🥩</div>
+                        <p>Red Meat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="low_libido" class="condition-content" style="display: none;">
+            <h2 style="font-size: 20px; margin-bottom: 5px;">Low Libido</h2>
+            <p style="color: #64748B; margin-bottom: 20px;">Diet Plan</p>
+            
+            <div class="food-section">
+                <h3><i class="fas fa-check-circle" style="color: #10B981;"></i> Recommended Foods</h3>
+                <div class="food-grid">
+                    <div class="food-item">
+                        <div class="food-icon">🍉</div>
+                        <p>Watermelon</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍫</div>
+                        <p>Dark Chocolate</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🥑</div>
+                        <p>Avocado</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🧄</div>
+                        <p>Garlic</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🫚</div>
+                        <p>Ginger</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="food-section">
+                <h3><i class="fas fa-times-circle" style="color: #EF4444;"></i> Foods to Avoid</h3>
+                <div class="food-grid">
+                    <div class="food-item">
+                        <div class="food-icon">🫘</div>
+                        <p>Soy Products</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍟</div>
+                        <p>Trans Fats</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍺</div>
+                        <p>Alcohol</p>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">☕</div>
+                        <p>Caffeine</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="food-section" style="margin-top: 20px;">
+            <h3><i class="fas fa-clock" style="color: #7C3AED;"></i> Set Diet Reminder</h3>
+            <div style="display: flex; gap: 15px; margin-top: 15px;">
+                <div style="flex: 1;">
+                    <label style="font-size: 13px; color: #64748B;">Time</label>
+                    <input type="time" value="08:00 AM" style="width: 100%; padding: 12px; border: 2px solid #E2E8F0; border-radius: 10px; margin-top: 5px;">
+                </div>
+                <div style="flex: 1;">
+                    <label style="font-size: 13px; color: #64748B;">Repeat</label>
+                    <select style="width: 100%; padding: 12px; border: 2px solid #E2E8F0; border-radius: 10px; margin-top: 5px;">
+                        <option>Daily</option>
+                        <option>Weekly</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" style="margin-top: 15px;">Save Reminder</button>
+        </div>
+    </div>
+    
+    <script>
+        function showCondition(condition) {
+            document.querySelectorAll('.condition-content').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelectorAll('.condition-tab').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById(condition).style.display = 'block';
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

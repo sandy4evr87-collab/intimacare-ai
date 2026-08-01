@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Companion - IntimaCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <button class="back-btn" onclick="history.back()" style="background: rgba(255,255,255,0.2); color: white;">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="chat-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div>
+                <h3 style="font-size: 16px;">Intima AI</h3>
+                <p style="font-size: 12px; opacity: 0.8;">Your AI Companion</p>
+            </div>
+            <button style="margin-left: auto; background: none; border: none; color: white; font-size: 20px;">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-content">
+                    Hello {{ current_user.name }} 👋<br>
+                    I'm Intima AI<br>
+                    How can I help you today?
+                </div>
+            </div>
+            
+            <div class="quick-replies">
+                <button class="quick-reply" onclick="sendMessage('Relationship Advice')">Relationship Advice 💑</button>
+                <button class="quick-reply" onclick="sendMessage('Diet & Nutrition')">Diet & Nutrition 🥗</button>
+                <button class="quick-reply" onclick="sendMessage('Water Reminder')">Water Reminder 💧</button>
+                <button class="quick-reply" onclick="sendMessage('Mood Improvement')">Mood Improvement 😊</button>
+                <button class="quick-reply" onclick="sendMessage('Stress Relief')">Stress Relief 🧘</button>
+                <button class="quick-reply" onclick="sendMessage('Sexual Health Education')">Sexual Health Education 📚</button>
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage(document.getElementById('messageInput').value)">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage(document.getElementById('messageInput').value);
+            }
+        }
+        
+        function sendMessage(message) {
+            if (!message.trim()) return;
+            
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = '<div class="message-content">' + message + '</div>';
+            chatMessages.appendChild(userMsg);
+            
+            // Clear input
+            document.getElementById('messageInput').value = '';
+            
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Send to server
+            fetch('/send-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'message=' + encodeURIComponent(message)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Add bot response
+                const botMsg = document.createElement('div');
+                botMsg.className = 'message bot';
+                botMsg.innerHTML = '<div class="message-content">' + data.response + '</div>';
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        }
+    </script>
+</body>
+</html>

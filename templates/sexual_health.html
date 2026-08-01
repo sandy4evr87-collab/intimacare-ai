@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sexual Health - IntimaCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="page-header">
+        <button class="back-btn" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="page-title">Sexual Wellness</h1>
+    </div>
+    
+    <div class="activity-list">
+        <h3 style="margin-bottom: 15px;">Select Category</h3>
+        <div style="display: flex; gap: 15px; margin-bottom: 25px;">
+            <button class="btn" style="flex: 1; background: #3B82F6; color: white;">
+                <i class="fas fa-mars"></i> Male
+            </button>
+            <button class="btn" style="flex: 1; background: #EC4899; color: white;">
+                <i class="fas fa-venus"></i> Female
+            </button>
+        </div>
+        
+        <h3 style="margin-bottom: 15px;">Common Concerns</h3>
+        
+        <a href="{{ url_for('diet_chart') }}" class="activity-card">
+            <div class="activity-icon" style="background: #FEE2E2;">
+                <i class="fas fa-fire" style="color: #EF4444;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>Low Libido</h4>
+                <p>Boost your natural drive</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </a>
+        
+        <a href="{{ url_for('diet_chart') }}" class="activity-card">
+            <div class="activity-icon" style="background: #DBEAFE;">
+                <i class="fas fa-bolt" style="color: #3B82F6;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>Erectile Dysfunction</h4>
+                <p>Improvement strategies</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </a>
+        
+        <a href="{{ url_for('diet_chart') }}" class="activity-card">
+            <div class="activity-icon" style="background: #FEF3C7;">
+                <i class="fas fa-clock" style="color: #F59E0B;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>Premature Ejaculation</h4>
+                <p>Control techniques</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </a>
+        
+        <a href="{{ url_for('diet_chart') }}" class="activity-card">
+            <div class="activity-icon" style="background: #EDE9FE;">
+                <i class="fas fa-venus" style="color: #7C3AED;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>PCOS</h4>
+                <p>Management & treatment</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </a>
+        
+        <a href="{{ url_for('diet_chart') }}" class="activity-card">
+            <div class="activity-icon" style="background: #D1FAE5;">
+                <i class="fas fa-droplet" style="color: #10B981;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>Vaginal Dryness</h4>
+                <p>Solutions & remedies</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </a>
+        
+        <a href="{{ url_for('diet_chart') }}" class="activity-card">
+            <div class="activity-icon" style="background: #FCE7F3;">
+                <i class="fas fa-moon" style="color: #EC4899;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>Menopause</h4>
+                <p>Health guidance</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </a>
+        
+        <a href="{{ url_for('diet_chart') }}" class="activity-card">
+            <div class="activity-icon" style="background: #FEF3C7;">
+                <i class="fas fa-scale-balanced" style="color: #F59E0B;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>Hormonal Imbalance</h4>
+                <p>Balance your hormones</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </a>
+        
+        <a href="{{ url_for('diet_chart') }}" class="activity-card">
+            <div class="activity-icon" style="background: #D1FAE5;">
+                <i class="fas fa-baby" style="color: #10B981;"></i>
+            </div>
+            <div class="activity-info">
+                <h4>Fertility Support</h4>
+                <p>Reproductive health</p>
+            </div>
+            <i class="fas fa-chevron-right" style="color: #94A3B8;"></i>
+        </a>
+        
+        <a href="{{ url_for('doctors') }}" class="btn btn-primary" style="margin-top: 20px;">
+            <i class="fas fa-user-doctor"></i> View Diet Plan
+        </a>
+    </div>
+    
+    <nav class="bottom-nav">
+        <a href="{{ url_for('dashboard') }}" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('sexual_health') }}" class="nav-item active">
+            <i class="fas fa-heart-pulse"></i>
+            <span>Health</span>
+        </a>
+        <a href="{{ url_for('ai_companion') }}" class="nav-item">
+            <i class="fas fa-robot"></i>
+            <span>AI</span>
+        </a>
+        <a href="{{ url_for('notifications') }}" class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>Reminders</span>
+        </a>
+        <a href="{{ url_for('profile') }}" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - IntimaCare AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <h1 class="greeting">Hello, {{ current_user.name }} 👋</h1>
+        <p class="greeting-sub">How are you feeling today?</p>
+        
+        <!-- Mood Selector -->
+        <div class="mood-selector">
+            <h3>Select your mood</h3>
+            <div class="mood-options">
+                <button class="mood-btn {% if mood_today and mood_today.mood == 'great' %}active{% endif %}" onclick="logMood('great')">
+                    <span style="font-size: 28px;">😄</span>
+                    <span>Great</span>
+                </button>
+                <button class="mood-btn {% if mood_today and mood_today.mood == 'good' %}active{% endif %}" onclick="logMood('good')">
+                    <span style="font-size: 28px;">🙂</span>
+                    <span>Good</span>
+                </button>
+                <button class="mood-btn {% if mood_today and mood_today.mood == 'okay' %}active{% endif %}" onclick="logMood('okay')">
+                    <span style="font-size: 28px;">😐</span>
+                    <span>Okay</span>
+                </button>
+                <button class="mood-btn {% if mood_today and mood_today.mood == 'stressed' %}active{% endif %}" onclick="logMood('stressed')">
+                    <span style="font-size: 28px;">😔</span>
+                    <span>Stressed</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Today's Progress -->
+        <div class="progress-section">
+            <div class="section-header">
+                <h3>Today's Progress</h3>
+                <a href="#">View All</a>
+            </div>
+            
+            <div class="progress-card">
+                <div class="progress-icon water">
+                    <i class="fas fa-droplet"></i>
+                </div>
+                <div class="progress-info">
+                    <h4>Water</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill water" style="width: {{ (water_consumed / water_goal * 100) | int }}%"></div>
+                    </div>
+                </div>
+                <span class="progress-percent">{{ (water_consumed / water_goal * 100) | int }}%</span>
+            </div>
+            
+            <div class="progress-card">
+                <div class="progress-icon diet">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="progress-info">
+                    <h4>Diet</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill diet" style="width: 66%"></div>
+                    </div>
+                </div>
+                <span class="progress-percent">66%</span>
+            </div>
+            
+            <div class="progress-card">
+                <div class="progress-icon mental">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="progress-info">
+                    <h4>Mental Health</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill mental" style="width: 80%"></div>
+                    </div>
+                </div>
+                <span class="progress-percent">80%</span>
+            </div>
+            
+            <div class="progress-card">
+                <div class="progress-icon sexual">
+                    <i class="fas fa-heart-pulse"></i>
+                </div>
+                <div class="progress-info">
+                    <h4>Sexual Wellness</h4>
+                    <div class="progress-bar">
+                        <div class="progress-fill sexual" style="width: 70%"></div>
+                    </div>
+                </div>
+                <span class="progress-percent">70%</span>
+            </div>
+        </div>
+        
+        <!-- Quick Access -->
+        <div class="quick-access">
+            <h3>Quick Access</h3>
+            <div class="quick-grid">
+                <a href="{{ url_for('diet_chart') }}" class="quick-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Diet Plans</span>
+                </a>
+                <a href="{{ url_for('water_reminder') }}" class="quick-item">
+                    <i class="fas fa-droplet"></i>
+                    <span>Water Reminder</span>
+                </a>
+                <a href="{{ url_for('stress_relief') }}" class="quick-item">
+                    <i class="fas fa-spa"></i>
+                    <span>Stress Relief</span>
+                </a>
+                <a href="{{ url_for('mental_wellness') }}" class="quick-item">
+                    <i class="fas fa-brain"></i>
+                    <span>Mental Wellness</span>
+                </a>
+                <a href="{{ url_for('sexual_health') }}" class="quick-item">
+                    <i class="fas fa-heart-pulse"></i>
+                    <span>Sexual Health</span>
+                </a>
+                <a href="{{ url_for('ai_companion') }}" class="quick-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Assistant</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="{{ url_for('dashboard') }}" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="{{ url_for('sexual_health') }}" class="nav-item">
+            <i class="fas fa-heart-pulse"></i>
+            <span>Health</span>
+        </a>
+        <a href="{{ url_for('ai_companion') }}" class="nav-item">
+            <i class="fas fa-robot"></i>
+            <span>AI</span>
+        </a>
+        <a href="{{ url_for('notifications') }}" class="nav-item">
+            <i class="fas fa-bell"></i>
+            <span>Reminders</span>
+        </a>
+        <a href="{{ url_for('profile') }}" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+    
+    <script>
+        function logMood(mood) {
+            fetch('/log-mood', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'mood=' + mood
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.querySelectorAll('.mood-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    event.target.closest('.mood-btn').classList.add('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
