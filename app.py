@@ -7,7 +7,8 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'intimacare-secret-key-2026'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///intimacare.db'
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'intimacare.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
